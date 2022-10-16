@@ -21,56 +21,14 @@ import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', async ({auth, view }:HttpContextContract) => {
-  await auth.use('web').check()
-  if(auth.use('web').isLoggedIn){
-    // view.redirect().toRoute('dashboard');
-  }
-  var configs = {
-    title : 'Login - Gerenciamento de Contas MercadoLivre',
-    titulo_logo: 'JML'
-  }
-  return view.render('login', configs)
-});
-Route.get('/login', async ({ auth, view }:HttpContextContract) => {
-  await auth.use('web').check()
-  if(auth.use('web').isLoggedIn){
-    // view.redirect().toRoute('dashboard');
-  }
-  var configs = {
-    title : 'Login - Gerenciamento de Contas MercadoLivre',
-    titulo_logo: 'JML'
-  }
-  return view.render('login', configs)
-});
-Route.get('/register', async ({ view }) => {
-  var configs = {
-    title : 'Registrar-se - Gerenciamento de Contas MercadoLivre',
-    titulo_logo: 'JML'
-  }
-  return view.render('register', configs)
-});
+Route.get('/', 'CommonsController.login').middleware('noAuth');
+Route.get('/login', 'CommonsController.login').middleware('noAuth');
+Route.get('/register', 'CommonsController.register').middleware('noAuth');
+Route.get('/forgot','CommonsController.forgot').middleware('noAuth');
 
-Route.get('/forgot', async ({ view }) => {
-  var configs = {
-    title : 'Esqueci minha senha',
-    titulo_logo: 'JML'
-  }
-  return view.render('forgot', configs)
-});
+Route.get('/dashboard', 'CommonsController.dashboard').middleware('auth');
 
-
-Route.get('/dashboard', async ({ auth,  view, request }) => {
-  await auth.use('web').authenticate()
-  
-  var configs = {
-    title : 'Dashboard - Gerenciamento de Contas',
-    titulo_logo: 'JML',
-    route: request?.ctx.route?.pattern
-  }
-  return view.render('dashboard', configs)
-});
-
+Route.get('logout', 'CommonsController.logout').middleware('auth');
 Route.group(() => {
   Route.get('/user', 'UsersController.userSettings')
   Route.group(() => {
@@ -91,7 +49,8 @@ Route.group(() => {
   
   Route.get('/reviews', 'ReviewsController.index');
   Route.get('/frete', 'ShippingsController.index');
-}).prefix('/logged')
+}).prefix('/logged').middleware('auth')
+
 Route.post('/register', 'UsersController.store');
 Route.post('/login', 'UsersController.login');
 Route.get('*', async ({view}) => {
