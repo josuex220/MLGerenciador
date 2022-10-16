@@ -1,0 +1,197 @@
+      <!-- Menu -->
+
+      <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+        <div class="app-brand jh">
+          <a href="index.html" class="app-brand-link">
+            <span class="app-brand-logo jh">
+             
+            </span>
+            <span class="app-brand-text jh menu-text fw-bolder ms-2">{{titulo_logo}}</span>
+          </a>
+
+          <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+            <i class="bx bx-chevron-left bx-sm align-middle"></i>
+          </a>
+        </div>
+
+        <div class="menu-inner-shadow"></div>
+
+        <ul class="menu-inner py-1">
+          <!-- Dashboard -->
+          <li class="menu-item
+          @if(route == '/dashboard')
+            active
+          @end
+          ">
+            <a href="/" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-home-circle"></i>
+              <div data-i18n="Dashboard">Dashboard</div>
+            </a>
+          </li>
+
+        
+
+          <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Usuario</span>
+          </li>
+            <!-- Cadastro -->
+            <li class="menu-item 
+            @if(route == '/logged/contas' || route == '/logged/emails' || route == '/logged/emails/criar' || route == '/logged/emails/editar' || route == '/logged/contas/criar' || route == '/logged/contas/editar')
+              active
+            @end
+            ">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                  <i class="menu-icon tf-icons bx bx-user"></i>
+                  
+                  <div data-i18n="cadastro">Cadastro</div>
+                </a>
+    
+                <ul class="menu-sub">
+                  <li class="menu-item
+                    @if(route == '/logged/contas' || route == '/logged/contas/criar'  || route == '/logged/contas/editar' )
+                    active
+                    @end
+                  ">
+                    <a href="/logged/contas" class="menu-link">
+                      <div data-i18n="Without menu">Conta MercadoLivre</div>
+                    </a>
+                  </li>
+                  <li class="menu-item
+                  @if(route == '/logged/emails' || route == '/logged/emails/criar'  || route == '/logged/emails/editar' )
+                  active
+                  @end
+                  ">
+                    <a href="/logged/emails" class="menu-link">
+                      <div data-i18n="Without navbar">Emails</div>
+                    </a>
+                  </li>
+                  
+                </ul>
+            </li>
+            
+            <li class="menu-item  
+            @if(route == '/logged/blocked' || route == '/logged/blocked/inserir' )
+             active
+            @end
+            ">
+                <a href="/logged/blocked" class="menu-link">
+                  <i class="menu-icon tf-icons bx bx-block"></i>
+                  <div data-i18n="Bloquear">Bloquear Usuarios</div>
+                </a>
+            </li>
+            <li class="menu-item  
+                @if(route == '/logged/reviews')
+                 active
+                @end
+                ">
+                <a href="/logged/reviews" class="menu-link">
+                  <i class="menu-icon tf-icons bx bx-bar-chart-alt-2"></i>
+                  <div data-i18n="Qualificações">Qualificações</div>
+                </a>
+            </li>
+            
+            
+          <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Produtos</span>
+          </li>
+            <!-- Produtos -->
+            <li class="menu-item 
+                @if(route == '/logged/descricao' || route == '/logged/descricao/criar' || route == '/logged/descricao/editar' || route == '/logged/produtos' || route == '/logged/produtos/criar' || route == '/logged/produtos/editar' )
+                 active
+                @end
+                ">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                  <i class="menu-icon tf-icons bx bx-sitemap"></i>
+                  <div data-i18n="produtos-cad">Cadastro</div>
+                </a>
+    
+                <ul class="menu-sub">
+                  <li class="menu-item 
+                  @if(route == '/logged/descricao' || route == '/logged/descricao/criar' || route == '/logged/descricao/editar' )
+                   active
+                  @end
+                  ">
+                    <a href="/logged/descricao" class="menu-link">
+                      <div data-i18n="Descrição">Descrição</div>
+                    </a>
+                  </li>
+                  <li class="menu-item 
+                  @if( route == '/logged/produtos' || route == '/logged/produtos/criar' || route == '/logged/produtos/editar' )
+                   active
+                  @end
+                  ">
+                    <a href="/logged/produtos" class="menu-link">
+                      <div data-i18n="Produtos">Produtos</div>
+                    </a>
+                  </li>
+                  
+                </ul>
+            </li>
+            
+            <li class="menu-item 
+            @if(route == '/logged/frete' || route == '/logged/frete/criar' || route == '/logged/frete/editar' )
+             active
+            @end
+            ">
+                <a href="/logged/frete" class="menu-link">
+                  <i class="menu-icon tf-icons bx bx-package"></i>
+                  <div data-i18n="Frete">Frete</div>
+                </a>
+              </li>
+              <li class="menu-item 
+              @if(route == '/logged/pedidos' || route == '/logged/pedidos/criar' || route == '/logged/pedidos/editar' )
+               active
+              @end
+              ">
+                  <a href="/logged/pedidos" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-cart"></i>
+                    <div data-i18n="Pedidos">Pedidos</div>
+                  </a>
+              </li>
+              <li class="menu-item 
+              @if(route == '/logged/mensagens' || route == '/logged/mensagens/criar' || route == '/logged/mensagens/editar' )
+               active
+              @end
+              ">
+                  <a href="/logged/mensagens" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-message"></i>
+                    <div data-i18n="Mensagens">Mensagens</div>
+                  </a>
+              </li>
+
+              
+          <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Anúncios</span>
+          </li>
+          <li class="menu-item">
+              <a href="/logged/bot" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-bot"></i>
+                <div data-i18n="Mensagens">Resposta Automatica</div>
+              </a>
+          </li>
+          <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+              <i class="menu-icon tf-icons bx bx-basket"></i>
+              <div data-i18n="produtos-cad">Meus Anúncios</div>
+            </a>
+            <ul class="menu-sub">
+              <li class="menu-item">
+                <a href="/logged/anuncio/novo" class="menu-link">
+                  <div data-i18n="Without menu">Criar Novo</div>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="/logged/anuncio/lista" class="menu-link">
+                  <div data-i18n="Without navbar">Publicados</div>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="/logged/anuncio/concorrentes" class="menu-link">
+                  <div data-i18n="Without navbar">Concorrentes</div>
+                </a>
+              </li>
+              
+            </ul>
+        </li>
+      </aside>
+      <!-- / Menu -->
